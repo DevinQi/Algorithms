@@ -1,3 +1,3 @@
 # Algorithms
-* **Data structure**
+**Data structure**
 --------------------
