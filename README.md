@@ -1,6 +1,6 @@
 # Algorithms
 
-1. [**Data structure**](http://)
+1. [**Data structure**](https://github.com/DevinQi/Algorithms/tree/master/DataStructure)
     * Queue
     * Stack
     * Binary Search Tree
