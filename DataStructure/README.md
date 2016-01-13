@@ -125,7 +125,60 @@ Tree
 * **Height** of a B-tree is Θ (log n)/(log d).
 * Cost of search, insert, delete is = O(log n);
  
+Multi-Dimensional Data
+----------------------
+### Quad-Tree
+Suppose we have n points P = {(x0, y0), (x1, y1), · · · , (xn−1, yn−1)} in the plane
+* **Build** a quad-tree:
+ 1. Find square R that contains all points of P.
+ 2. Root of quadtree corresponds to R
+ 3. **Split**: Partition R into four equal subsquares, each is a child of R.
+ 4. Recursively repeat this process for any node that containts more than one point
+ 5. Each leaf stores one point
+* **Spread factor** of points P:β(P) = dmax/dmin:
+ * dmax(dmin): maximum (minimum) distance between two points in P
+* **Height** of quadtree: h ∈ Θ(log dmax/dmin)
+* Worst-case complexity to build initial tree = Θ(#nodes) = Θ(nh)
+* Worst-case complexity of range search = O(#nodes) = O(nh)
+* [code]()
+* 
 
+### kd-tree
+Suppose we have n points P = {(x0, y0), (x1, y1), · · · , (xn−1, yn−1)} in the plane
+* **Build** a kd-tree on P:
+ 1. Split P into two equal subsets using vertical line
+ 2. Split each of the two subsets into two equal pieces using horizontal lines
+ 3. Continue until every point is in a separate region
+* **Complexity** of build a ke-tree: Θ(n log n)
+* **Height** of kd-tree : Θ(log n)
+* **Complexity of Range Search**:
+ * O(k + U) where k is number of keys reported and U is number of regions we go to but unsuccessfully, It solves to O（k + √n)
+* Storge: O(n)
+* Construction Time: O(nlog(n))
+* Range Query Time: O( n^(1- 1/d) + k)
+* 
+
+### Range Tree
+**Range Tree** for two dimention
+* **Search**: O(k + log^2 n)
+* Construction Time: O(n log n)
+* pace Usage: O(n log n)
+**Range Tree** for n dimention
+* **Storge**: O(n (log n)^(d−1))
+* Construction time: O(n (log n)^(d−1))
+* Range query time: O((log n)^d + k)
+*
+
+### Trie
+* A dictonary for binary string
+* Structure of tire:
+ * Item(keys) are stored only in the leaf nodes
+ * A left child corresponds to a 0 bits
+ * A right child corresponds to a 1 bit
+* **prefix-free**: no key is a prefix of a another key
+* Time Complexity of all operations (Search, Insert, Delete) is Θ(|x|), where x is length of binary string.
+* [code]()
+* 
 
 
 
