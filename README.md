@@ -11,3 +11,12 @@
     * kd-Tree
     * Quad Tree
     * Tries
+2. [**Divide and Conquer**]()
+   * Counting inversion
+   * Maxmum Subarray
+   * Fingding Median
+   * Cloest Pair
+   * Arithemtic Problem
+   * Integer Multiplication
+   * Ployomial Multiplication
+   * Fast Fourie Transform
