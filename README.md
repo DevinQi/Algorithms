@@ -11,7 +11,7 @@
     * kd-Tree
     * Quad Tree
     * Tries
-2. [**Divide and Conquer**]()
+2. [**Divide and Conquer**](https://github.com/DevinQi/Algorithms/tree/master/Divide_and_Conquer)
    * Counting inversion
    * Maxmum Subarray
    * Fingding Median
