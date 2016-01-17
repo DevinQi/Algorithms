@@ -16,6 +16,7 @@
     * Observe that we can determine this infomation when we merge the two sorted list as in merge sort.When we insert a number in the second half to the merged list, we know how many numbers in the first half is grater than it, as in merge sort,this can be done in O(n) time
       
     First merge
+
     | 3 | 9 | 2 | 4 |
     |---|---|---|---|
 
@@ -48,7 +49,7 @@
   ```
   Totoal running time is T(n) = 2T(n/2) + O(nlog(n))  ===> T(n) = Θ(nlog(n))
   
-  * [Code]()
+  * [Code](https://github.com/DevinQi/Algorithms/blob/master/Divide_and_Conquer/Code)
 
 
 
