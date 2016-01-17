@@ -67,8 +67,7 @@
   * [n/2+1,j] is a maximum subarray starting from n/2 +1.
  * The total time complexity :
   T(n) = 2T(n/2) + O(n)   <- for maximum "crossing" subarray, and this implies that T(n) = O(nlog(n))
-
-
+ *[code]()
 
 
 
