@@ -49,7 +49,7 @@
   ```
   Totoal running time is T(n) = 2T(n/2) + O(nlog(n))  ===> T(n) = Θ(nlog(n))
   
-  * [Code](https://github.com/DevinQi/Algorithms/blob/master/Divide_and_Conquer/Code)
+  * [Code](https://github.com/DevinQi/Algorithms/blob/master/Divide_and_Conquer/Counting_inversion_pair)
 
 
 
