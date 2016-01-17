@@ -1,0 +1,81 @@
+# Code in C++
+
+```
+//
+//  main.cpp
+//  Count-inversion
+//
+//  Created by Devin Qi on 2016-01-16.
+//  Copyright © 2016 Devin Qi. All rights reserved.
+//
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+using namespace std;
+
+int count(int * A,int begin,int end){               // function count
+    if ((end - begin) <= 1){                        // basecase: when length 1 or 0
+        if(A[begin] > A[end] ){
+            return 1;
+        }else{
+            return 0;
+        }
+    }else{
+        int num_cross=0;                            //num_cross: # of corss inversion pairs
+        int mid = (end-begin)/2 + begin;            //mid : the mid postion of array A
+        //cout << "mid is"<<mid<<endl;
+        vector<int> vl;
+        vl.insert(vl.begin(),A+begin,A+mid+1);      // vl: vector of left
+        vector<int> vr;                             // vr: vector of right
+        vr.insert(vr.begin(),A+mid+1,A+end+1);
+        sort(vl.begin(),vl.end());
+        sort(vr.begin(),vr.end());                  //default sorting : O(nlog(n))
+        /*cout << "left ording";
+        for(int i = 0;i < vl.size();++i){
+            cout <<vl.at(i)<<" ";
+        }
+        cout << "right ording";
+        for(int i = 0;i < vr.size();++i){
+            cout <<vr.at(i)<<" ";
+        }
+        cout << endl;*/
+        int l =0;
+        int r = 0;
+        while((l < vl.size())&&(r <vr.size())){
+            //cout <<l << " " <<vl.at(l) << "   " << r<< " " <<vr.at(r)<<endl;
+            if(vl.at(l) > vr.at(r)){
+                //cout<< num_cross <<" + 1 "<<endl;
+                num_cross+= vl.size()-l;
+                ++r;
+            }else{
+                //cout<< num_cross << " + 0"<<endl;
+                ++l;
+            }
+            //cout << "accross is " << num_cross<<endl;
+        }
+        return count(A,begin,mid) + count(A,mid+1,end) + num_cross;
+    }
+}
+
+
+
+int main() {
+    int t;
+    string s;
+    stringstream ss;
+    while(getline(cin,s)){
+        ss.str(s);
+        int * a = new int[1000];
+        int c = 0;
+        while(ss>>t){
+            a[c] = t;
+            ++c;
+        }
+        int result = count(a,0,c-1);
+        cout << "There are "<< result<< " inversion pairs this line"<<endl;
+        delete a;
+    }
+}
+```
