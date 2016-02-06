@@ -50,7 +50,7 @@ Imagine that we are in a maze searching for the exit, we could model this proble
 * **DFS** algorithm:
   * **Input**: an undirected graph G=(V,E), a vertex s in V
   * **Output**: all vertices reachable from s
-<code>  
+<pre><code> 
 (main program)
 visited[v] = fale for all v in V // gloval variable array
 visited[v] = true. explore(x)
