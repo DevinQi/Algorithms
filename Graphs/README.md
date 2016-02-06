@@ -50,7 +50,7 @@ Imagine that we are in a maze searching for the exit, we could model this proble
 * **DFS** algorithm:
   * **Input**: an undirected graph G=(V,E), a vertex s in V
   * **Output**: all vertices reachable from s
-<code>
+<code>  
 (main program)
 visited[v] = fale for all v in V // gloval variable array
 visited[v] = true. explore(x)
@@ -58,6 +58,7 @@ visited[v] = true. explore(x)
 for each neigbour v of u
   if visitied[v] = false
     visitied[v] = true explore(v)
+</code></pre>
 * **Time Complexity**
   * Similar to BFS
     * each vertex u is called the recursice function explore(u) once
@@ -71,7 +72,7 @@ for each neigbour v of u
     4. A non-tree-edge uv is called a *back edge* if either u is an ancestor of v or u is a descendent of v. it is called a back edge because this edge was explored from the decendent to the ancestor
 * Starting time and finishing time
 We keep track of the time when a vertex if first visited and finished exporing, pseudocodo in the following:
-<code>
+<pre><code>  
 (main program)
 visited[v] = false for all v in V //global variable array
 time =1       // the new variable keeping track the time
@@ -82,7 +83,7 @@ explore(u) // recursive function explore
     if visited[v] = false
       visited[v] = true, explore(v)
   finish[u] = time. time <- time+1//finish is an array to store finishing time
-</code>
+</code></pre>
 * Properties:
   1. The intervals [start(u),finish(u)] and [start(v),finish(v)] for u and v are either disjoint or one is contained in another. the latter case happens precising when u,v are an ancestor-descendent pair
   2. in an undirected garpgh, all non-tree edges are back edges
