@@ -97,8 +97,10 @@ low[v] := min(start[v], start[w](where uw is a  back edge with u a descendent of
   * to check whether v is a cut vertex, we just need to check whether low[ui] < star[v]
   * [code]()
 
-
-
+#### Shorest path(with direction and weight)
+* **Example**
+Probably you have played the game “snake and ladder” before. There is an n×n grid (most commonly n = 10), where the n2 squares are numbered from 1 to n2. All players start from square one. Each takes turns to roll a dice, and move one to six steps depending on the outcome of the dice (i.e. if the current square is i, we may move to square i+1,...,i+6). After a move, if there is a ladder with its bottom in the square that we are in, we move up to the top of the ladder; on the other hand, if there is a snake with its head in the square that we are in, we have to move down to the tail of the snake. The goal is to race to the square n2 as quickly as possible.Your friend is an amateur in designing new maps for this game. You would like to write a computer program to check whether the new maps are good. There are a couple things that we would like to check. First, we would like to check whether it is possible at all to reach square 100 (it may be impossible if there are too many snakes). Then, we would like to compute how many turns it takes in the worst case to reach square 100 (which could be infinity).
+*[code]()
 
 
 
