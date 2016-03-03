@@ -1,0 +1,145 @@
+//
+//  main.cpp
+//  cs341_a3q1
+//
+//  Created by Devin Qi on 2016-02-28.
+//  Copyright © 2016 Devin Qi. All rights reserved.
+//
+
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+bool terminal = 0;
+
+
+class Cell{
+public:
+    int num;                    //this cell's order
+    int laderto;                //if it has a lader, where it goes to
+    int snaketo;                //if it has a snake, where it goes to
+    int next;
+    int baobaozhale;            //宝宝炸了
+    int zhaheilemei;            //炸黑了没
+    int visited;
+    Cell(int n){
+        num = n;
+        laderto = -1;
+        snaketo = -1;
+        next = n+1;
+        zhaheilemei = 0;
+        baobaozhale = 0;
+        visited = 0;
+    }
+    Cell(){}
+};
+class Map{
+public:
+    Cell * cellarray;
+    int num;
+    Map(int n ){
+        cellarray = new Cell[n*n];
+        for(int i = 0;i < n*n;i++){
+            cellarray[i] = NULL;
+        }
+        num = n*n;
+    }
+    ~Map(){
+        delete[] cellarray;
+    }
+    void zhashei(int p,int n){          //炸谁
+        if(cellarray[p].snaketo != -1){
+            cout<< "infinity"<<endl;
+            terminal =1;
+            return;
+        }
+        cellarray[p].zhaheilemei = 1;
+        cellarray[p].baobaozhale = max(n,cellarray[p].baobaozhale);
+        if(p == num){
+            return;
+        }
+        if(cellarray[p].laderto > 0){
+            zhashei(cellarray[p].laderto, n);
+            return;
+        }
+        
+        if((p+1 < num)&&(cellarray[p+1].visited == 0)){
+            cellarray[p+1].visited =1;
+            zhashei(p+1, n+1);
+        }
+        if((p+2 < num)&&(cellarray[p+2].visited == 0)){
+            cellarray[p+2].visited =1;
+            zhashei(p+2, n+2);
+        }
+        if((p+3 < num)&&(cellarray[p+3].visited == 0)){
+            cellarray[p+3].visited =1;
+            zhashei(p+3, n+3);
+        }
+        if((p+4 < num)&&(cellarray[p+4].visited == 0)){
+            cellarray[p+4].visited =1;
+            zhashei(p+4, n+4);
+        }
+        if((p+5 < num)&&(cellarray[p+5].visited == 0)){
+            if(cellarray[p+5].snaketo == 1){
+                cellarray[p+5].visited =1;
+                zhashei(p+5, n+5);
+            }
+            if((p+6 < num)&&(cellarray[p+6].visited == 0)){
+                cellarray[p+6].visited =1;
+                zhashei(p+6, n+6);
+            }
+        }
+    }
+};
+
+
+
+int main(){
+    int n;
+    int num_lader;
+    int num_snake;
+    int num_cell = n*n;
+    cin >> n >> num_lader>> num_snake;
+    Map M(n);
+    for (int i = 0;  i < num_cell;i++){
+        Cell c(i+1);
+        M.cellarray[i] = c;
+    }
+    for(int i = 0; i < num_lader;i++){
+        int start;
+        int end;
+        cin >> start>>end;
+        M.cellarray[start].laderto = end;
+    }
+    for (int i = 0;i< num_snake;++i){
+        int start;
+        int end;
+        cin >> start>>end;
+        M.cellarray[start].snaketo = end;
+    }
+    int count = 1;
+    int determine = 0;
+    for(int i =1; i < n*n;++i){
+        if ((M.cellarray[i-1].snaketo > 0) &&(M.cellarray[i].snaketo > 0)){
+            count++;
+        }else{
+            count =1;
+        }
+        if (count == 6){
+            determine =1;
+            break;
+        }
+    }
+    if (determine == 1){
+        cout << "impossible"<<endl;
+        return 0;
+    }
+    
+    M.zhashei(0,1);
+    if(terminal == 0){
+        cout << M.cellarray[n*n-1].baobaozhale-1<<endl;
+    }
+}
