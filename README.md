@@ -20,3 +20,9 @@
    * Integer Multiplication
    * Ployomial Multiplication
    * Fast Fourie Transform
+
+3. [**Graph**](https://github.com/DevinQi/Algorithms/tree/master/Graphs)
+   * Graph Connectivity
+   * Breadth First Search
+   * Depth First Search
+   * Shortest path problem
